@@ -10,28 +10,6 @@ CHANGES
 
 	IN FILES: 
 	
-		IN USAGE
-		
-			\network-site\addons\default\modules\fundraising\js\fundraising.js
-	
-				CHANGED CODE: 
-				
-					FROM: 
-					
-					
-					TO: 
-					
-						
-	
-		\network-site\system\cms\config\asset.php
-		
-			ADDED CODE: 
-			
-				$add_library(array(
-					'js' => array('_commons/common_ajax.js')
-				));
-		
-	
 		ADDED NEW FILE: \network-site\assets\_commons\common_ajax.js
 		
 			CODE IN IT: 
@@ -157,4 +135,75 @@ CHANGES
 					
 					//Initialization
 					AJAX.construct();
-				})							
+				})			
+
+	
+		\network-site\system\cms\config\asset.php
+		
+			ADDED CODE: 
+			
+				$add_library(array(
+					'js' => array('_commons/common_ajax.js')
+				));
+		
+
+		
+	
+IN USAGE
+		
+	EXAMPLE: \network-site\addons\default\modules\fundraising\js\fundraising.js
+
+		CHANGED CODE: 
+		
+			FROM: 
+			
+				//get the donation form html
+				$.ajax({
+					type: "POST",
+					url: BASE_URI + 'fundraising/donation_form',
+					data: donation,
+					cache: false,
+					success: function(response){
+
+						if(response.status=='ok') {
+							$.colorbox({
+								width: 600,
+								overlayClose: false,
+								maxHeight: '100%',
+								height: 550,
+								html: response.html
+							});
+
+							$('#cboxLoadedContent select').chosen();
+
+						} else {
+							alert('Please you must login first before donate!');
+							// window.location.href = "users/login/supportus";
+						}
+					},
+					error: function(response){
+						alert('sorry we had a problem, please try again');
+					}
+				});					
+			
+			TO: 
+			
+				//get the donation form html
+				AJAX.call('fundraising/donation_form', donation, function() {
+					if(response.status=='ok') {
+						$.colorbox({
+							width: 600,
+							overlayClose: false,
+							maxHeight: '100%',
+							height: 550,
+							html: response.html
+						});
+						$('#cboxLoadedContent select').chosen();
+					} 
+					else {
+						alert('Please you must login first before donate!');
+					}
+				});
+
+
+						
