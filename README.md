@@ -41,11 +41,11 @@ CHANGES
 					$.object_ajax = {
 						
 						//variables
-						default_async			:	true,				//true or false - false is depricated, recommended true
-						default_mehtod 			:	"",					//POST or GET
+						default_async			:	true,			//true or false - false is depricated, recommended true
+						default_mehtod 			:	"",			//POST or GET
 						default_base_url		:	"",		
-						default_data			:	{},					//Can be anything, default is an empty object
-						default_data_type		:	"",					//text, xml, json, script or html
+						default_data			:	{},			//Can be anything, default is an empty object
+						default_data_type		:	"",			//text, xml, json, script or html
 						default_success_function	:	function(){},		//function will be evaulated if call was succes
 						default_error_function		:	function(){},		//function will be evaulated if call caused error
 						default_complete_function	:	function(){},		//function will be evaulated if call was completed
