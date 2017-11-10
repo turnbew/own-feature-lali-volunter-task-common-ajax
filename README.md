@@ -88,9 +88,9 @@ CHANGES
 						*/
 						ajaxCall : function(request_url, sent_params, callback_success, callback_error, callback_complete)
 						{
-							var data 		= (sent_params != undefined) 		? sent_params 		: $.object_ajax.default_data;
-							var succes 		= (callback_succes != undefined) 	? callback_success 	: $.object_ajax.default_success_function;
-							var error 		= (callback_error != undefined) 	? callback_error 	: $.object_ajax.default_error_function;
+							var data 	= (sent_params != undefined) 		? sent_params 		: $.object_ajax.default_data;
+							var succes 	= (callback_succes != undefined) 	? callback_success 	: $.object_ajax.default_success_function;
+							var error 	= (callback_error != undefined) 	? callback_error 	: $.object_ajax.default_error_function;
 							var complete 	= (callback_complete != undefined)	? callback_complete	: $.object_ajax.default_complete_function;
 							var response 	= $.ajax({
 												url 	: BASE_URI + request_url, 
