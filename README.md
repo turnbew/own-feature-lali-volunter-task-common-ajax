@@ -1,16 +1,18 @@
+FOR PRIVACY AND CODE PROTECTING REASONS THIS IS A SIMPLIFIED VERSION OF CHANGES AND NEW FEATURES
+
 TASK DATE: 10.11.2017 - FINISHED: 10.11.2017
 
-TASK SHORT DESCRIPTION: - (NEW AJAX object created by Lajos Deli)
+TASK LEVEL: (HARD)  
+
+TASK SHORT DESCRIPTION: (NEW AJAX object created by Lajos Deli)
 
 GITHUB REPOSITORY CODE: feature/lali-volunter-task-common-ajax
-
-ORIGINAL WORK: https://github.com/BusinessBecause/network-site/tree/feature/lali-volunter-task-common-ajax
 
 CHANGES
 
 	IN FILES: 
 	
-		ADDED NEW FILE: \network-site\assets\_commons\common_ajax.js
+		ADDED NEW FILE: common_ajax.js
 		
 			CODE IN IT: 
 		
@@ -138,7 +140,7 @@ CHANGES
 				})			
 
 	
-		\network-site\system\cms\config\asset.php
+		asset.php
 		
 			ADDED CODE: 
 			
@@ -146,64 +148,3 @@ CHANGES
 					'js' => array('_commons/common_ajax.js')
 				));
 		
-
-		
-	
-IN USAGE
-		
-	EXAMPLE: \network-site\addons\default\modules\fundraising\js\fundraising.js
-
-		CHANGED CODE: 
-		
-			FROM: 
-			
-				//get the donation form html
-				$.ajax({
-					type: "POST",
-					url: BASE_URI + 'fundraising/donation_form',
-					data: donation,
-					cache: false,
-					success: function(response){
-
-						if(response.status=='ok') {
-							$.colorbox({
-								width: 600,
-								overlayClose: false,
-								maxHeight: '100%',
-								height: 550,
-								html: response.html
-							});
-
-							$('#cboxLoadedContent select').chosen();
-
-						} else {
-							alert('Please you must login first before donate!');
-							// window.location.href = "users/login/supportus";
-						}
-					},
-					error: function(response){
-						alert('sorry we had a problem, please try again');
-					}
-				});					
-			
-			TO: 
-			
-				//get the donation form html
-				AJAX.call('fundraising/donation_form', donation, function() {
-					if(response.status=='ok') {
-						$.colorbox({
-							width: 600,
-							overlayClose: false,
-							maxHeight: '100%',
-							height: 550,
-							html: response.html
-						});
-						$('#cboxLoadedContent select').chosen();
-					} 
-					else {
-						alert('Please you must login first before donate!');
-					}
-				});
-
-
-						
